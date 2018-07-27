@@ -9,11 +9,21 @@ public class UnityAndroid : MonoBehaviour
     //[SerializeField] private GameObject canvas;
     private string imageName = "";
 
+	public AudioClip audioClip;
+	private AudioSource audioSource;
+
+	void Start () {
+		audioSource = gameObject.GetComponent<AudioSource>();
+		audioSource.clip = audioClip;
+	}
+
+
 	void Update()
 	{
 		if (Input.GetMouseButtonDown (0)) {
 			//写真をとる瞬間だけUI非表示にする
 			//canvas.SetActive(false);
+			audioSource.Play ();
 			StartCoroutine ("Captcha");
 		}
 	}
